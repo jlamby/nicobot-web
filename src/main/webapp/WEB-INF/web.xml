@@ -5,10 +5,25 @@
 			version="2.5">
   
   	<display-name>Nicobot Web Interface</display-name>
-  	
-  	<listener>
-    	<listener-class>com.st.nicobot.web.listener.ApplicationListener</listener-class>
-  	</listener>
+
+	<context-param>
+		<param-name>webapp-composer-class</param-name>
+		<param-value>com.st.nicobot.web.composer.NicoWebappComposer</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>picoFilter</filter-name>
+		<filter-class>org.picocontainer.web.PicoServletContainerFilter$ServletFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>picoFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>com.st.nicobot.web.listener.ApplicationListener</listener-class>
+	</listener>
   	
   	<servlet>
   		<servlet-name>hello</servlet-name>
