@@ -8,7 +8,7 @@
 	
 	<groupId>com.st</groupId>
 	<artifactId>nicobot-web</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.0-SNAPSHOT</version>
 	
 	<packaging>war</packaging>
 	
@@ -33,7 +33,7 @@
     	<dependency>
     		<groupId>com.st</groupId>
     		<artifactId>nicobot</artifactId>
-    		<version>1.0.0</version>
+    		<version>1.0.0-SNAPSHOT</version>
     	</dependency>
     	
     	<dependency>
@@ -50,6 +50,11 @@
       		<version>3.8.1</version>
       		<scope>test</scope>
    		</dependency>
+		<dependency>
+		    <groupId>org.picocontainer.web</groupId>
+		    <artifactId>picocontainer-web-core</artifactId>
+		    <version>2.5.1</version>
+		</dependency>
 	</dependencies> 
 
 </project>
