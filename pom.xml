@@ -8,7 +8,7 @@
 	
 	<groupId>com.st</groupId>
 	<artifactId>nicobot-web</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	
 	<packaging>war</packaging>
 	
@@ -33,7 +33,7 @@
     	<dependency>
     		<groupId>com.st</groupId>
     		<artifactId>nicobot</artifactId>
-    		<version>1.0.0-SNAPSHOT</version>
+    		<version>1.0.0</version>
     	</dependency>
     	
     	<dependency>
