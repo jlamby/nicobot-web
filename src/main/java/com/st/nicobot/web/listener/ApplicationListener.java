@@ -9,8 +9,8 @@ import org.picocontainer.lifecycle.ReflectionLifecycleStrategy;
 import org.picocontainer.web.PicoServletContainerListener;
 import org.picocontainer.web.ScopedContainers;
 
-import com.st.nicobot.NicoBot;
-import com.st.nicobot.property.NicobotProperty;
+import com.st.nicobot.bot.NicoBot;
+import com.st.nicobot.bot.utils.NicobotProperty;
 import com.st.nicobot.services.PropertiesService;
 
 
