@@ -23,10 +23,11 @@ public class ApplicationListener extends PicoServletContainerListener {
 		super.contextInitialized(arg0);
 
 		ScopedContainers scopedContainers = (ScopedContainers) arg0.getServletContext().getAttribute(
-		        ScopedContainers.class.getName());
+				ScopedContainers.class.getName());
 
 		NicoBot bot = scopedContainers.getApplicationContainer().getComponent(NicoBot.class);
 		bot.disconnect();
+		bot.dispose();
 	}
 
 	@Override
