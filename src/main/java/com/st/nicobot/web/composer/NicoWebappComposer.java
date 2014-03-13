@@ -5,9 +5,9 @@ import javax.servlet.ServletContext;
 import org.picocontainer.MutablePicoContainer;
 import org.picocontainer.web.WebappComposer;
 
+import com.st.nicobot.context.ClassLoader;
 import com.st.nicobot.context.ComponentUtils;
 import com.st.nicobot.context.annotations.Component;
-import com.st.nicobot.utils.ClassLoader;
 
 
 /**
@@ -15,7 +15,7 @@ import com.st.nicobot.utils.ClassLoader;
  *
  */
 public class NicoWebappComposer implements WebappComposer {
-	
+
 	@Override
 	public void composeApplication(MutablePicoContainer container, ServletContext servletContext) {
 		ComponentUtils.loadComponents(container, ClassLoader.getAllInstantiableClasses());
@@ -26,12 +26,12 @@ public class NicoWebappComposer implements WebappComposer {
 
 	@Override
 	public void composeSession(MutablePicoContainer container) {
-		
+
 	}
 
 	@Override
 	public void composeRequest(MutablePicoContainer container) {
-		
+
 	}
 
 }

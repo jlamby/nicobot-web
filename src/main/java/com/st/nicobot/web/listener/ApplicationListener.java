@@ -9,8 +9,8 @@ import org.picocontainer.lifecycle.ReflectionLifecycleStrategy;
 import org.picocontainer.web.PicoServletContainerListener;
 import org.picocontainer.web.ScopedContainers;
 
-import com.st.nicobot.NicoBot;
-import com.st.nicobot.property.NicobotProperty;
+import com.st.nicobot.bot.NicoBot;
+import com.st.nicobot.bot.utils.NicobotProperty;
 import com.st.nicobot.services.PropertiesService;
 
 
@@ -20,18 +20,24 @@ public class ApplicationListener extends PicoServletContainerListener {
 
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
-		
+		super.contextInitialized(arg0);
+
+		ScopedContainers scopedContainers = (ScopedContainers) arg0.getServletContext().getAttribute(
+		        ScopedContainers.class.getName());
+
+		NicoBot bot = scopedContainers.getApplicationContainer().getComponent(NicoBot.class);
+		bot.disconnect();
 	}
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 		super.contextInitialized(arg0);
-		
+
 		ScopedContainers scopedContainers = (ScopedContainers) arg0.getServletContext().getAttribute(ScopedContainers.class.getName());
-		
+
 		PropertiesService props = scopedContainers.getApplicationContainer().getComponent(PropertiesService.class);
 		NicoBot bot = scopedContainers.getApplicationContainer().getComponent(NicoBot.class);
-		
+
 		try {
 			bot.connect(props.get(NicobotProperty.BOT_SERVER));
 			bot.joinChannel(props.get(NicobotProperty.BOT_CHAN));
@@ -39,12 +45,12 @@ public class ApplicationListener extends PicoServletContainerListener {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	protected ComponentMonitor makeAppComponentMonitor() {
 		return new Slf4jComponentMonitor();
 	}
-	
+
 	@Override
 	protected LifecycleStrategy makeLifecycleStrategy() {
 		return new ReflectionLifecycleStrategy(makeAppComponentMonitor());
